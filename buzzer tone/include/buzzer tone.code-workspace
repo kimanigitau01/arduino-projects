@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../controlling-a-cpu-fan-user-input-control"
+		},
+		{
+			"path": "../../controlling-a-motor-using-a-push-button"
+		},
+		{
+			"path": "../../controlling-an-LED-with-a-push-button-switch"
+		},
+		{
+			"path": "../../dh11"
+		},
+		{
+			"path": "../../using-a-petentiometer-to-adjust-LED-brightness"
+		}
+	],
+	"settings": {}
+}

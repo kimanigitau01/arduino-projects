@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../Arduino/dht11"
+		},
+		{
+			"name": "dh11",
+			"path": "../../dh11"
+		},
+		{
+			"path": "../../controlling-an-LED-with-a-push-button-switch"
+		},
+		{
+			"name": "buzzer tone",
+			"path": ".."
+		},
+		{
+			"name": "using-a-petentiometer-to-adjust-LED-brightness",
+			"path": "../../using-a-petentiometer-to-adjust-LED-brightness"
+		},
+		{
+			"name": "controlling-a-cpu-fan-user-input-control",
+			"path": "../../controlling-a-cpu-fan-user-input-control"
+		},
+		{
+			"name": "controlling-a-motor-using-a-push-button",
+			"path": "../../controlling-a-motor-using-a-push-button"
+		},
+		{
+			"name": "Serial-monitor-test",
+			"path": "../../Serial-monitor-test"
+		}
+	],
+	"settings": {}
+}
