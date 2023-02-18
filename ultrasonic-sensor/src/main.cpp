@@ -31,44 +31,6 @@ void setup() {
   digitalWrite(greenLed, HIGH);
 }
 
-void loop() {
-  digitalWrite(trig, LOW);
-  delay(2);
-  digitalWrite(trig, HIGH);
-  delay(2);
-  digitalWrite(trig, LOW);
-
-  duration = pulseIn(echo, HIGH);
-  distance =  (duration * 0.034) / 2; // distance in centimeters
-  distanceInInches = centimetersToInches(distance);
-
-  if (distance <= 20){
-    alarmSequence(alarm, redLed, greenLed);
-    
-    Serial.print("Distance is");
-    Serial.print(distance);
-    Serial.println(" cm.");
-
-    Serial.print("Distance is");
-    Serial.print(distanceInInches);
-    Serial.println(" inches.");
-
-
-  }else{
-    normalSequence(alarm, redLed, greenLed);
-
-    Serial.print("Distance is");
-    Serial.print(distance);
-    Serial.println(" cm.");
-
-    Serial.print("Distance is");
-    Serial.print(distanceInInches);
-    Serial.println(" inches.");
-  }
-  delay(10); // to wait for next detection
-
-}
-
 void alarmSequence(int device, int detectLed, int neutralLed){
   tone(device, 500);
   delay(10);
@@ -110,5 +72,44 @@ void normalSequence(int device, int detectLed, int neutralLed){
 }
 
 int centimetersToInches(int centimeters){
-  int reading =  centimeters * 0.393701;
+  return centimeters * 0.393701;
 }
+
+void loop() {
+  digitalWrite(trig, LOW);
+  delay(2);
+  digitalWrite(trig, HIGH);
+  delay(2);
+  digitalWrite(trig, LOW);
+
+  duration = pulseIn(echo, HIGH);
+  distance =  (duration * 0.034) / 2; // distance in centimeters
+  distanceInInches = centimetersToInches(distance);
+
+  if (distance <= 20){
+    alarmSequence(alarm, redLed, greenLed);
+
+    Serial.print("Distance is");
+    Serial.print(distance);
+    Serial.println(" cm.");
+
+    Serial.print("Distance is");
+    Serial.print(distanceInInches);
+    Serial.println(" inches.");
+
+
+  }else{
+    normalSequence(alarm, redLed, greenLed);
+
+    Serial.print("Distance is");
+    Serial.print(distance);
+    Serial.println(" cm.");
+
+    Serial.print("Distance is");
+    Serial.print(distanceInInches);
+    Serial.println(" inches.");
+  }
+  delay(10); // to wait for next detection
+
+}
+
