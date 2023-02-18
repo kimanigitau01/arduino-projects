@@ -6,6 +6,7 @@ Written by: Manasseh Gitau
 
 int distance = 0;
 int duration  = 0;
+int distanceInInches;
 
 const int trig = 2;
 const int echo = 3;
@@ -38,23 +39,47 @@ void loop() {
   digitalWrite(trig, LOW);
 
   duration = pulseIn(echo, HIGH);
-  distance =  (duration * 0.034) / 2;
+  distance =  (duration * 0.034) / 2; // distance in centimeters
+  distanceInInches = centimetersToInches(distance);
 
   if (distance <= 20){
     alarmSequence(alarm, redLed, greenLed);
-  }else{
+    
+    Serial.print("Distance is");
+    Serial.print(distance);
+    Serial.println(" cm.");
 
+    Serial.print("Distance is");
+    Serial.print(distanceInInches);
+    Serial.println(" inches.");
+
+
+  }else{
+    normalSequence(alarm, redLed, greenLed);
+
+    Serial.print("Distance is");
+    Serial.print(distance);
+    Serial.println(" cm.");
+
+    Serial.print("Distance is");
+    Serial.print(distanceInInches);
+    Serial.println(" inches.");
   }
+  delay(10); // to wait for next detection
 
 }
 
 void alarmSequence(int device, int detectLed, int neutralLed){
-  tone(device, 100);
+  tone(device, 500);
   delay(10);
-  tone(device, 200);
+  tone(device, 1000);
   delay(10);
-  tone(device, 300);
+  tone(device, 1700);
   delay(10);
+
+  tone(device, 3000);
+
+  Serial.println("DANGER");
 
   digitalWrite(detectLed, HIGH);
   delay(500);
@@ -71,6 +96,7 @@ void alarmSequence(int device, int detectLed, int neutralLed){
 void normalSequence(int device, int detectLed, int neutralLed){
   noTone(device);
 
+  Serial.println("ALL GOOD");
   digitalWrite(detectLed, LOW);
 
   digitalWrite(neutralLed, HIGH);
@@ -81,4 +107,8 @@ void normalSequence(int device, int detectLed, int neutralLed){
   delay(1000);
   digitalWrite(neutralLed, LOW);
   delay(1000);
+}
+
+int centimetersToInches(int centimeters){
+  int reading =  centimeters * 0.393701;
 }
