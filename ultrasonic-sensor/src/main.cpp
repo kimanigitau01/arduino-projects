@@ -41,9 +41,11 @@ void loop() {
   distance =  (duration * 0.034) / 2;
 
   if (distance <= 20){
-    alarmSequence(alarm, led);
+    alarmSequence(alarm, redLed, greenLed);
+  }else{
 
   }
+
 }
 
 void alarmSequence(int device, int detectLed, int neutralLed){
@@ -56,12 +58,27 @@ void alarmSequence(int device, int detectLed, int neutralLed){
 
   digitalWrite(detectLed, HIGH);
   delay(500);
-  digitalWrite(redLed, LOW);
+  digitalWrite(detectLed, LOW);
   delay(500);
-  digitalWrite(redLed, HIGH);
+  digitalWrite(detectLed, HIGH);
   delay(500);
-  digitalWrite(redLed, LOW);
+  digitalWrite(detectLed, LOW);
   delay(500);
-  digitalWrite(greenLed, LOW);
   
+  digitalWrite(neutralLed, LOW);
+}
+
+void normalSequence(int device, int detectLed, int neutralLed){
+  noTone(device);
+
+  digitalWrite(detectLed, LOW);
+
+  digitalWrite(neutralLed, HIGH);
+  delay(1000);
+  digitalWrite(neutralLed, LOW);
+  delay(1000);
+  digitalWrite(neutralLed, HIGH);
+  delay(1000);
+  digitalWrite(neutralLed, LOW);
+  delay(1000);
 }
