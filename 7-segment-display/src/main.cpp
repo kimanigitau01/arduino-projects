@@ -27,8 +27,17 @@ Serial.println("Enter a number between 0 and 9: ");
 
 }
 
-setSegments(int numRequired);
-updateDisplay(int value);
+void setSegments(int numRequired){
+  for (int i = 0; i <8; i++){
+    digitalWrite(segmentPin[i], digits[numRequired][i]);
+  }
+}
+
+void updateDisplay(int value){
+  setSegments(value);
+}
+
+
 void loop() {
   if (Serial.available()){
     // get the input from the user
@@ -39,12 +48,3 @@ void loop() {
   
 }
 
-void updateDisplay(int value){
-  setSegments(value);
-}
-
-void setSegments(int numRequired){
-  for (int i = 0; i <8; i++){
-    digitalWrite(segmentPin[i], digits[numRequired][i]);
-  }
-}
