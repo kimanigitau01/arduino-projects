@@ -18,9 +18,9 @@ byte digits [10][8] = {
 
 };
 void setup() {
-  for (int i = 0; i <8; i++){
-    pinMode(segmentPin[i], OUTPUT);
-    digitalWrite(segmentPin[i], LOW);
+  for (int pin = 0; pin <= 7; pin++){
+    pinMode(segmentPin[pin], OUTPUT);
+    digitalWrite(segmentPin[pin], LOW);
   }
 Serial.begin(9600);
 Serial.println("Enter a number between 0 and 9: ");
@@ -28,8 +28,8 @@ Serial.println("Enter a number between 0 and 9: ");
 }
 
 void setSegments(int numRequired){
-  for (int i = 0; i <8; i++){
-    digitalWrite(segmentPin[i], digits[numRequired][i]);
+  for (int pin = 0; pin <= 7; pin++){
+    digitalWrite(segmentPin[pin], digits[numRequired][pin]);
   }
 }
 
