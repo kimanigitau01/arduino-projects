@@ -21,7 +21,7 @@ void setup() {
   for (int pin = 0; pin <= 7; pin++){
     pinMode(segmentPin[pin], OUTPUT);
     digitalWrite(segmentPin[pin], LOW);
-  }
+  };
 Serial.begin(9600);
 Serial.println("Enter a number between 0 and 9: ");
 
@@ -30,7 +30,7 @@ Serial.println("Enter a number between 0 and 9: ");
 void setSegments(int numRequired){
   for (int pin = 0; pin <= 7; pin++){
     digitalWrite(segmentPin[pin], digits[numRequired][pin]);
-  }
+  };
 }
 
 void updateDisplay(int value){
@@ -44,7 +44,7 @@ void loop() {
     char ch = Serial.read();
     int number = ch - '0';
     updateDisplay(number);
-  }
+  };
   
 }
 
