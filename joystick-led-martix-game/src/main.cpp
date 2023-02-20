@@ -10,8 +10,17 @@ void setup() {
   Serial.begin(9600);
 }
 
+char state(int pushButton){
+
+  if (pushButton == LOW){
+    printf("Not Pressed");
+  }else{
+    printf("Presssed");
+  }
+}
+
 void loop() {
-  String value = state(pushButton);
+  char value = state(pushButton);
   float verticalReading = analogRead(vertical);
   float horizontalReading =analogRead(horizontal);
   Serial.print("vertical: ");
@@ -23,14 +32,5 @@ void loop() {
 
 }
 
-String state(int pushButton){
 
-  if (pushButton == LOW){
-    String state = "Not pressed";
-    printf("%S",state);
-  }else{
-    String state = "Pressed";
-    printf("%S",state);
-  }
-}
 
